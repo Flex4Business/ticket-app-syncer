@@ -11,7 +11,8 @@ git clone $1 /source --depth=1
 git clone $2 /dest --depth=1
 
 echo "****** GET REQUIRED VARIABLES ******" >&2
-VERSION=$(grep -oP '(?<="version": ")[^"]*' /source/package.json)
+#VERSION=$(grep -oP '(?<="version": ")[^"]*' /source/package.json)
+VERSION=$(cat package.json | jq -r '.version')
 
 echo "UPDATE SOURCE VERSIONS"
 sed -i 's/"version": ".\..\.."/"version": "$VERSION"/g' /source/app.json
