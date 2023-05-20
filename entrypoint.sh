@@ -20,8 +20,8 @@ echo "UPDATE SOURCE VERSIONS"
 sed -i 's/"version": ".\..\.."/"version": "$VERSION"/g' /source/app.json
 
 echo "UPDATE DEST VERSIONS"
-sed -i 's/"version": ".\..\.."/"version": "$VERSION"/g' /dest/app.json
-sed -i 's/"version": ".\..\.."/"version": "$VERSION"/g' /dest/package.json
+sed -i "s/\"version\": \".\"/\"version\": \"$VERSION\"/g" /dest/app.json
+sed -i "s/\"version\": \".\"/\"version\": \"$VERSION\"/g" /dest/package.json
 
 echo "****** COPY FILES ******" >&2
 if [ -f "/source/.gitignore" ]; then
