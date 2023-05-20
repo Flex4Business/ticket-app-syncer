@@ -6,7 +6,7 @@ git config --global user.name "actions[repository-copy-action]"
 echo "$3" > /root/.ssh/id_rsa
 ssh-add /root/.ssh/id_rsa
 
-echo "$1"
+ps aux
 
 #echo "****** SETUP SOURCE & DEST REPOS ******" >&2
 #git clone $1 /source --depth=1
