@@ -6,12 +6,13 @@ git config --global user.name "actions[repository-copy-action]"
 echo "$3" > /root/.ssh/id_rsa
 ssh-add /root/.ssh/id_rsa
 
-ls -lah /root/.ssh
+echo "****** SETUP SOURCE & DEST REPOS ******" >&2
+git clone $1 /source --depth=1
+git clone $2 /dest --depth=1
 
-#echo "****** SETUP SOURCE & DEST REPOS ******" >&2
-#git clone $1 /source --depth=1
-#git clone $2 /dest --depth=1
-#
+ls /source
+ls /dist
+
 #echo "****** GET REQUIRED VARIABLES ******" >&2
 ##VERSION=$(grep -oP '(?<="version": ")[^"]*' /source/package.json)
 #VERSION=$(cat package.json | jq -r '.version')
