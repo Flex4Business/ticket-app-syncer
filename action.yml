@@ -15,4 +15,4 @@ runs:
   args:
     - ${{ inputs.source_repo }}
     - ${{ inputs.destination_repo }}
-    - ${{ inputs.source_private_ssh_key }}
+    - ${{ inputs.private_ssh_key }}
