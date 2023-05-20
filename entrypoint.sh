@@ -1,5 +1,7 @@
 #!/bin/sh -l
 
+eval "$(ssh-agent -s)"
+
 echo "****** PREREQUISITES ******" >&2
 git config --global user.email "actions[repository-copy-action]@mail.com"
 git config --global user.name "actions[repository-copy-action]"
