@@ -9,6 +9,7 @@ echo "$3" > /root/.ssh/id_rsa
 ssh-add /root/.ssh/id_rsa
 
 ps aux
+ls -lah ~/root/.ssh
 
 #echo "****** SETUP SOURCE & DEST REPOS ******" >&2
 #git clone $1 /source --depth=1
