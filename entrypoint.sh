@@ -10,6 +10,9 @@ echo "****** SETUP SOURCE & DEST REPOS ******" >&2
 git clone $1 /source --depth=1
 git clone $2 /dest --depth=1
 
+echo "****** CLEANUP src ******" >&2
+rm -rf /dest/src
+
 echo "****** GET REQUIRED VARIABLES ******" >&2
 #VERSION=$(grep -oP '(?<="version": ")[^"]*' /source/package.json)
 VERSION=$(cat package.json | jq -r '.version')
