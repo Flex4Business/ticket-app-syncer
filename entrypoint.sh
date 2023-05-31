@@ -1,5 +1,7 @@
 #!/bin/sh -l
 
+eval "$(ssh-agent -s)"
+
 echo "****** PREREQUISITES ******" >&2
 git config --global user.email "actions[repository-copy-action]@mail.com"
 git config --global user.name "actions[repository-copy-action]"
@@ -15,14 +17,14 @@ rm -rf /dest/src
 
 echo "****** GET REQUIRED VARIABLES ******" >&2
 #VERSION=$(grep -oP '(?<="version": ")[^"]*' /source/package.json)
-VERSION=$(cat package.json | jq -r '.version')
+VERSION=$(cat /source/package.json | jq -r '.version')
 
 echo "UPDATE SOURCE VERSIONS"
 sed -i 's/"version": ".\..\.."/"version": "$VERSION"/g' /source/app.json
 
 echo "UPDATE DEST VERSIONS"
-sed -i 's/"version": ".\..\.."/"version": "$VERSION"/g' /dest/app.json
-sed -i 's/"version": ".\..\.."/"version": "$VERSION"/g' /dest/package.json
+sed -i "s/\"version\": \".\..\..\"/\"version\": \"$VERSION\"/g" /dest/app.json
+sed -i "s/\"version\": \".\..\..\"/\"version\": \"$VERSION\"/g" /dest/package.json
 
 echo "****** COPY FILES ******" >&2
 if [ -f "/source/.gitignore" ]; then
