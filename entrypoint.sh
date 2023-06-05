@@ -55,6 +55,8 @@ cd /
 echo "****** DONE ******" >&2
 echo $VERSION
 echo $VERSION_CODE
+echo "> /source/package.json"
+cat /source/package.json | jq
 echo "> /source/app.json"
 cat /source/app.json | jq
 echo "> /dest/app.json"
