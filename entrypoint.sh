@@ -56,8 +56,8 @@ echo "****** DONE ******" >&2
 echo $VERSION
 echo $VERSION_CODE
 echo "> /source/app.json"
-jq /source/app.json
+cat /source/app.json | jq
 echo "> /dest/app.json"
-jq /dest/app.json
+cat /dest/app.json | jq
 echo "> /dest/package.json"
-jq /dest/package.json
+cat /dest/package.json | jq
