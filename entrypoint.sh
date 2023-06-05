@@ -22,15 +22,15 @@ VERSION_CODE=$(cat /source/package.json | jq -r '.versionCode')
 echo "UPDATE SOURCE VERSIONS"
 #sed -i 's/"version": ".\..\.."/"version": "$VERSION"/g' /source/app.json
 
-jq ".version = \"$VERSION\"" /source/app.json > /tmp/app.json && mv /tmp/app.json /source/app.json
-jq ".versionCode = \"$VERSION_CODE\"" /source/app.json > /tmp/app.json && mv /tmp/app.json /source/app.json
+jq ".expo.version = \"$VERSION\"" /source/app.json > /tmp/app.json && mv /tmp/app.json /source/app.json
+jq ".expo.android.versionCode = \"$VERSION_CODE\"" /source/app.json > /tmp/app.json && mv /tmp/app.json /source/app.json
 
 echo "UPDATE DEST VERSIONS"
 #sed -i "s/\"version\": \".\..\..\"/\"version\": \"$VERSION\"/g" /dest/app.json
 #sed -i "s/\"version\": \".\..\..\"/\"version\": \"$VERSION\"/g" /dest/package.json
 
-jq ".version = \"$VERSION\"" /dest/app.json > /tmp/app.json && mv /tmp/app.json /dest/app.json
-jq ".versionCode = \"$VERSION_CODE\"" /dest/app.json > /tmp/app.json && mv /tmp/app.json /dest/app.json
+jq ".expo.version = \"$VERSION\"" /dest/app.json > /tmp/app.json && mv /tmp/app.json /dest/app.json
+jq ".expo.android.versionCode = \"$VERSION_CODE\"" /dest/app.json > /tmp/app.json && mv /tmp/app.json /dest/app.json
 
 jq ".version = \"$VERSION\"" /dest/package.json > /tmp/package.json && mv /tmp/package.json /dest/package.json
 jq ".versionCode = \"$VERSION_CODE\"" /dest/package.json > /tmp/package.json && mv /tmp/package.json /dest/package.json
