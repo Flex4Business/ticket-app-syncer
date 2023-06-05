@@ -53,4 +53,11 @@ git push
 cd /
 
 echo "****** DONE ******" >&2
-
+echo $VERSION
+echo $VERSION_CODE
+echo "> /source/app.json"
+jq /source/app.json
+echo "> /dest/app.json"
+jq /dest/app.json
+echo "> /dest/package.json"
+jq /dest/package.json
